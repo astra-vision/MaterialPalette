@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KBPXMDF7');</script>
+    <!-- End Google Tag Manager -->
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Material Palette</title>
+    <meta name="description" content="Extraction of PBR Materials from a Single Image">
+    <meta name="keywords" content="Rendering, PBR, SVBRDF estimation, Stable Diffusion, Material extraction, texture extraction, Textual inversion, Dreambooth, LoRA">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="icons/sphere.png">
+    <link href='https://fonts.googleapis.com/css?family=Inria Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="css/bulma.min.css">
+    <!-- <link rel="stylesheet" href="css/bulma-tooltip.min.css"> -->
+    <!-- <link href="~bulma-carousel/dist/css/bulma-carousel.min.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bulma-tooltip@3.0.2/dist/css/bulma-tooltip.min.css" rel="stylesheet">
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <script src="script.js"></script>
+    <!-- <link rel="stylesheet" href="css/bulma-carousel.min.css"> -->
+    <!-- <link rel="stylesheet" href="css/bulma-slider.min.css"> -->
+    <!-- <link rel="stylesheet" href="css/fontawesome.all.min.css"> -->
+    <link rel="stylesheet" href="css/academicons.min.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KBPXMDF7"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- <script src="~bulma-carousel/dist/js/bulma-carousel.min.js"></script> -->
+    <!-- End Google Tag Manager (noscript) -->
+    <!-- <div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div> -->
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <!-- <h1 class="title is-1 title-header">Materials Palette</h1> -->
+                        <h1 class="title is-1 title-main"><matex></matex>: Extraction of Materials from a Single Image</h1>
+                        <div class="is-size-5 authors">
+                            <span class="author-block">
+                                <a href="https://wonjunior.github.io/">Ivan Lopes</a><sup class="is-size-7"> 1</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://fabvio.github.io/">Fabio Pizzati</a><sup class="is-size-7"> 2</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://team.inria.fr/rits/membres/raoul-de-charette/">Raoul de Charette</a><sup class="is-size-7"> 1</sup>
+                            </span>
+                        </div>
+
+                        <div class="is-size-6 publication-authors">
+                            <span style="margin-right:10px" class="author-block"><sup class="is-size-7">1 </sup><a style="color:black" href="https://astra-vision.github.io/team/">Astra-vision</a>, Inria Paris</span>
+                            <span class="author-block"><sup class="is-size-7">2 </sup>University of Oxford</span>
+                        </div>
+
+                        <div class="is-size-6 column has-text-centered">
+                            <div class="publication-links">
+                                <span class="link-block">
+                                    <a class="external-link button is-normal is-rounded is-dark" target="_blank" href="https://arxiv.org/abs/2311.17060">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <!-- <a href="#" class="external-link button is-normal is-rounded is-dark has-tooltip-bottom" data-tooltip="Tooltip Text"> -->
+                                    <a href="#" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <img src="icons/pdf.png" alt="pdf file" >
+                                        </span>
+                                        <span>paper + supp</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a class="external-link button is-normal is-rounded is-dark" href="https://github.com/astra-vision/MaterialPalette" target="_blank">
+                                        <span class="icon">
+                                            <img src="icons/github.png" alt="github repo" >
+                                        </span>
+                                        <span>code</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a href="#" style="cursor:help" class="external-link button is-normal is-rounded is-dark has-tooltip-bottom" data-tooltip="Coming soon!">
+                                        <span class="icon">
+                                            <img src="icons/dash.png" alt="dataset" >
+                                        </span>
+                                        <span>dataset</span>
+                                    </a>
+                                </span>
+                                <!-- <span class="link-block">
+                                    <a href="https://www.youtube.com/watch?v=0mDk2tFOJCg" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <svg class="svg-inline--fa fa-youtube fa-w-18" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="youtube" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg="">
+                                                <path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z">
+                                                </path>
+                                            </svg>
+                                        </span>
+                                        <span>Video</span>
+                                    </a>
+                                </span> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero">
+        <div class="container is-fullhd">
+            <div class="subtitle has-text-centered is-italic" style="color: red">
+                page currently under construction...
+            </div>
+            <div class="subtitle has-text-centered">
+                <matex></matex> extracts a palette of PBR materials (albedo, normals, and roughness) from a single real-world image.
+            </div>
+            <!-- <figure class="image container"> -->
+                <img src="figures/teaser.png">
+            <!-- </figure> -->
+        </div>
+    </section>
+
+    <section class="section" id="sec:video">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3 decorated"><span><img width=30 class="mr-2" src="icons/video.png">Demo</span></h2>
+                    <!-- <div class="content has-text-justified is-italic">
+                    </div> -->
+                    <video controls>
+                        <source src="media/demo.mp4" type="video/mp4">
+                          Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="sec:abstract">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3 decorated"><span><img width=30 class="mr-2" src="icons/tasks.png">Abstract</span></h2>
+                    <div class="content has-text-justified is-italic">
+                        <p>
+                            In this paper, we propose a method to extract Physically-Based-Rendering (PBR) materials from a single real-world image. We do so in two steps: first, we map regions of the image to material concepts using a diffusion model, which allows the sampling of texture images resembling each material in the scene. Second, we benefit from a separate network to decompose the generated textures into Spatially Varying BRDFs (SVBRDFs), providing us with materials ready to be used in rendering applications. Our approach builds on existing synthetic material libraries with SVBRDF ground truth, but also exploits a diffusion-generated RGB texture dataset to allow generalization to new samples using unsupervised domain adaptation (UDA). Our contributions are thoroughly evaluated on synthetic and real-world datasets. We further demonstrate the applicability of our method for editing 3D scenes with materials estimated from real photographs.
+                            <!-- The code and models will be made open-source. -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="sec:pipeline">
+        <div class="container is-fullhd">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3 decorated"><span><img width=30 class="mr-2">Pipeline</span></h2>
+                    <figure class="image">
+                        <img src="figures/pipeline.png">
+                    </figure>
+                    <div class="content is-1 has-text-justified mt-4">
+                        From a single image \(\mathcal{I}\) (left) our method extracts the SVBRDF of dominant materials~(right). Considering a set of regions \(\{\mathcal{R}_1,\cdots,\mathcal{R}_N\}\) from a user or a segmenter <img style="margin-bottom: -6px" src="icons/one.png"></img>, we process each region \(\mathcal{R}_i\) separately following two steps. In <img style="margin-bottom: -6px" src="icons/two.png"></img>, we finetune Stable Diffusion on crops of the region \(P_{\text{C}}\) to learn a concept \(S^*\), which is later used to generate a texture image \(P_\text{SD}\) resembling \(P_{\text{C}}\). Then in <img style="margin-bottom: -6px" src="icons/three.png"></img>, these patches are decomposed into SVBRDF intrinsic maps \((\textbf{A}lbedo, \textbf{N}ormal, \textbf{R}oughness)\) using a multi-task network. Finally, the output of the method is a palette of extracted materials \(\{M_1,\cdots,M_N\}\) corresponding to input regions \(\{\mathcal{R}_1,\cdots,\mathcal{R}_N\}\).
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="modal-corn-tex" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content" style="width:auto">
+          <div class="box has-text-centered p-0" style="background-color: transparent;">
+            <img class="inline-block" src="images/corn_2K_downsample.png" alt="">
+            <!-- Your content -->
+          </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <div id="modal-giraffe-tex" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content" style="width:auto">
+          <div class="box has-text-centered p-0" style="background-color: transparent;">
+            <img class="inline-block" src="images/giraffe_2K_downsample.png" alt="">
+            <!-- Your content -->
+          </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <div id="modal-coral-tex" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content" style="width:auto">
+          <div class="box has-text-centered p-0" style="background-color: transparent;">
+            <img class="inline-block" src="images/coral_2K_downsample.png" alt="">
+            <!-- Your content -->
+          </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <div id="modal-zebra-tex" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content" style="width:auto">
+          <div class="box has-text-centered p-0" style="background-color: transparent;">
+            <img class="inline-block" src="images/zebra_2K_downsample.png" alt="">
+            <!-- Your content -->
+          </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+
+    <!-- <button class="js-modal-trigger" data-target="modal-js-example">
+        Open JS example modal
+      </button> -->
+    <section class="section"  id="sec:method">
+        <div class="container is-fullhd">
+          <div class="columns is-centered">
+            <div class="column">
+                <h2 class="title is-3 decorated"><span><img width=30 class="mr-2" src="icons/extract.png">Texture extraction</span></h2>
+                <div class="columns is-centered">
+                  <div class="column">
+                      <figure class="image" style="position: relative;">
+                        <div id="corn-tex" class="js-modal-trigger" data-target="modal-corn-tex"></div>
+                        <div id="coral-tex" class="js-modal-trigger" data-target="modal-coral-tex"></div>
+                        <div id="giraffe-tex" class="js-modal-trigger" data-target="modal-giraffe-tex"></div>
+                        <div id="zebra-tex" class="js-modal-trigger" data-target="modal-zebra-tex"></div>
+                        <img src="figures/extraction.png">
+                      </figure>
+                      <div class="content has-text-justified mt-2">
+                          <!-- <span class="has-text-weight-bold">Domain adaptation for SVBRDF maps estimation.</span>  -->
+                          <span class="has-text-weight-bold">Texture extraction.</span> We compare texture extracted from natural images with 4 baselines, either patch-based or region-based. Different from baselines, our method is based on a learned concept \(S^*\) which, when used for generating samples, corrects artifacts, is not limited to a fixed resolution, and is fully tileable, resulting in homogeneous textures. We show outputs of our method at a resolution of  \(\texttt{2048*2048}\), alongside <span style="color:#df082a">\(\times\textbf{2}\)</span> and <span style="color:#0054b9">\(\times\textbf{4}\)</span> zooms.
+                          <!-- We train a decomposition network on data extracted by a text-to-image diffusion model \(\mathcal{T}\), along with materials from a synthetic dataset \(\mathcal{S}\). We enforce both regression \(\mathcal{L}_{rec}\) and rendering \(\mathcal{L}_{ren}\) losses using pseudo-masks \(\hat{M}\) extracted by a model trained on \(\mathcal{S}\). -->
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+            <div class="column">
+              <h2 class="title is-3 decorated"><span><img width=30 class="mr-2" src="icons/nn.png">Decomposition</span></h2>
+              <div class="columns is-centered">
+                <div class="column">
+                    <figure class="image">
+                      <img src="figures/pl_da.png">
+                    </figure>
+                    <div class="content has-text-justified is-italic mt-2">
+                        <span class="has-text-weight-bold">SVBRDF Unsupervised Domain Adaptation.</span>
+                        We train a decomposition network \(f\) on labeled SVBRDF materials \(\mathcal{S}\) and unlabeled target data \(\mathcal{T}\) from our novel \(\mathsf{TexSD}\) dataset. Ultimately, \(\mathcal{T}\) acts as a domain bridge between the SVBRDF dataset and the real domain, <span class="is-italic">ie.</span> patches generated from our extraction method.
+                        <!-- We enforce both regression and rendering losses on \(\mathcal{S}\) and \(\mathcal{T}\) using pseudo-maps \(\hat{M}\) extracted by the source-only model \(f^{\mathcal{S}}\) (top). The final adapted model is denoted \(f^{\mathcal{T}}\). -->
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- <style>
+        swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    swiper-slide {
+      width: 80%;
+    }
+
+    swiper-slide:nth-child(2n) {
+      width: 60%;
+    }
+
+    swiper-slide:nth-child(3n) {
+      width: 40%;
+    }
+    </style> -->
+
+
+    <section class="section" id="sec:texsd">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 decorated"><span><img width=30 class="mr-2" src="icons/texture_gray.png">Supporting dataset: \(\mathsf{texSD}\)</span></h2>
+
+            <div class="container">
+                <table class="table is-narrow" style="background-color: transparent">
+                    <tbody>
+
+                        <tr>
+                            <td><div class="has-tooltip-bottom" data-tooltip="zebra fur"><img src="images/texsd/zebrafur_004.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="bamboo"><img src="images/texsd/bamboo_016.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="brick wall"><img src="images/texsd/brickwall_037.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="candy"><img src="images/texsd/candy_021.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="corduroy"><img src="images/texsd/corduroy_052.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="damask"><img src="images/texsd/damask_045.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="has-tooltip-bottom" data-tooltip="granite"><img src="images/texsd/granite_033.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="fabric"><img src="images/texsd/fabric_049.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="fur"><img src="images/texsd/fur_015.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="checkered pattern"><img src="images/texsd/checkeredpattern_007.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="checkered pattern"><img src="images/texsd/checkeredpattern_016.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="fur"><img src="images/texsd/fur_049.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="has-tooltip-bottom" data-tooltip="corduroy"><img src="images/texsd/corduroy_055.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="giraffe fur"><img src="images/texsd/giraffefur_066.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="gravel"><img src="images/texsd/gravel_054.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="fur"><img src="images/texsd/fur_016.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="leather"><img src="images/texsd/leather_052.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="marble"><img src="images/texsd/marble_062.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="has-tooltip-bottom" data-tooltip="marble"><img src="images/texsd/marble_076.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="onyx"><img src="images/texsd/onyx_051.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="marble mosaic"><img src="images/texsd/marblemosaic_050.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="oakwood"><img src="images/texsd/oakwood_057.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="painted wood"><img src="images/texsd/paintedwood_032.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="pebbles"><img src="images/texsd/pebbles_019.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="has-tooltip-bottom" data-tooltip="pinewood"><img src="images/texsd/pinewood_052.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="procelain"><img src="images/texsd/porcelain_008.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="quartzite top"><img src="images/texsd/quartzitetop_023.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="tiger fur"><img src="images/texsd/tigerfur_075.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="rock"><img src="images/texsd/rock_012.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="rustic wood"><img src="images/texsd/rusticwood_006.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="has-tooltip-bottom" data-tooltip="slate"><img src="images/texsd/slate_037.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="snake skin"><img src="images/texsd/snakeskin_044.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="terrazzo"><img src="images/texsd/terrazzo_009.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="tiger fur"><img src="images/texsd/tigerfur_000.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="resin"><img src="images/texsd/resin_045.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="wood floor"><img src="images/texsd/woodfloor_072.png"></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="section"  id="sec:quant">
+        <div class="container is-max-desktop">
+          <h2 class="title is-3 decorated"><span><img width=30 class="mr-2" src="icons/graph.png">Quantitative results</span></h2>
+          <div class="columns is-centered">
+            <div class="column">
+                <h2 class="title is-4 has-text-centered"><span>Full pipeline</span></h2>
+                <div class="columns is-centered">
+                  <div class="column">
+                      <figure class="image">
+                        <img src="tables/extraction.png">
+                      </figure>
+                      <div class="content has-text-justified mt-2">
+                          <span class="has-text-weight-bold">End-to-end evaluation.</span> We evaluate our ability to extract materials resembling PBR datasets such as \(\text{AmbientCG}\) over a fixed set of classes. We successfully demonstrate that <matex></matex> extracts materials with class-wise specificities, using either ground truth labels \(\text{OpenSurfaces}\) segmentation masks (\(\text{OS}\)) or using \(\text{DINO}\) / \(\text{SAM}\) as segmenters.
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+            <div class="column">
+              <h2 class="title is-4 has-text-centered"><span>Decomposition</span></h2>
+              <div class="columns is-centered">
+                <div class="column">
+                    <figure class="image">
+                      <img id="img_id" src="tables/decomposition_id.png">
+                      <img id="img_ood" class="is-hidden" src="tables/decomposition_ood.png">
+                    </figure>
+                    <div class="content has-text-justified mt-2">
+                        <span class="has-text-weight-bold">Decomposition evaluation.</span> <button onclick="toggle_visible()" class="button button-toggle is-link has-text-left" id="id_od_toggle"><img width=20 class="mr-2" src="icons/eye.png"><span>OOD</span></button> Evaluation of domain adaptation performances on In-Distribution (ID) and Out-Of-Distribution (OOD). \(MSE\) metrics are in \(10e1\). \(\Delta_{ANR}\) measures the relative performance over \(A,N,R\) \(\textit{wrt.}\) the source-only model trained on \(\text{AmbientCG}\). Our adaptation strategy outperforms the baselines and preserves generalization abilities on OOD samples. <todo>update w/ new table</todo>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section> -->
+
+    <section class="section" id="citation">
+        <div class="container is-max-desktop content">
+            <h2 class="title"><img width=30 class="mr-4" src="icons/citation.png">Consider citing us!</h2>
+            <pre><code>@misc{lopes2023matex,
+    title={Extraction of Materials from a Single Image},
+    author={<a style="color:#0F9D58" href="https://wonjunior.github.io/">Ivan Lopes</a> and <a style="color:#0F9D58" href="https://fabvio.github.io/">Fabio Pizzati</a> and <a style="color:#0F9D58" href="https://team.inria.fr/rits/membres/raoul-de-charette/">Raoul de Charette</a>},
+    year={2023}
+    publisher={arXiv},
+    primaryClass={cs.CV}
+}</code></pre></div>
+    </section>
+
+    <footer class="footer p-5">
+        <div class="container">
+            <!-- <div class="content has-text-centered">
+                <a class="icon-link" href="#">
+                </a>
+                <a class="icon-link" href="#" disabled=""></a>
+            </div> -->
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p style="text-align:center">
+                            Template <a target="_blank" href="https://wonjunior.github.io/">credit</a>.
+                        </p>
+                        <!-- <p style="text-align:center">
+                            Please contact <a href="">Simon Giebenhain</a> for feedback and questions.
+                        </p> -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  // Functions to open and close a modal
+  function openModal($el) {
+    $el.classList.add('is-active');
+  }
+
+  function closeModal($el) {
+    $el.classList.remove('is-active');
+  }
+
+  function closeAllModals() {
+    (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+      closeModal($modal);
+    });
+  }
+
+  // Add a click event on buttons to open a specific modal
+  (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+    const modal = $trigger.dataset.target;
+    const $target = document.getElementById(modal);
+
+    $trigger.addEventListener('click', () => {
+      openModal($target);
+    });
+  });
+
+  // Add a click event on various child elements to close the parent modal
+  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+    const $target = $close.closest('.modal');
+
+    $close.addEventListener('click', () => {
+      closeModal($target);
+    });
+  });
+
+  // Add a keyboard event to close all modals
+  document.addEventListener('keydown', (event) => {
+    if (event.code === 'Escape') {
+      closeAllModals();
+    }
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>

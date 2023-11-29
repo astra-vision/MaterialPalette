@@ -1,9 +1,17 @@
 /* BULMA overwriten properties */
-html, body {
+body {
     font-family: 'Inria Sans', sans-serif;
+    background-color: #f9f9f9;
+    margin: 10px
+}
+html {
     background-color: #f9f9f9;
 }
 
+/* carousel */
+.slider-pagination {
+    display: none;
+}
 /* .title {
     color: #242424 !important;
 } */
@@ -25,9 +33,9 @@ pre {
     border-radius: 5px;
 }
 
-.MJX-TEX {
+/* .MJX-TEX {
     font-size: 16px;
-}
+} */
 
 a {
     color: #1e88e5;
@@ -55,7 +63,7 @@ a {
 
 .title-main {
     font-size: 2.5em !important;
-    max-width: 600px;
+    max-width: 710px;
     margin: auto;
 }
 
@@ -70,6 +78,50 @@ matex:before {
     font-variant: small-caps;
     font-weight: bold !important;
     content: "Material Palette";
+}
+
+#corn-tex {
+    cursor: pointer;
+    color: transparent;
+    position: absolute;
+    width: 11.5%;
+    height: 20%;
+    right: 6%;
+    top: 15%;
+}
+
+#coral-tex {
+    cursor: pointer;
+    color: transparent;
+    position: absolute;
+    width: 11.5%;
+    height: 20%;
+    right: 6%;
+    top: 36.5%;
+}
+
+#giraffe-tex {
+    cursor: pointer;
+    color: transparent;
+    position: absolute;
+    width: 11.5%;
+    height: 20%;
+    right: 6%;
+    top: 58%;
+}
+
+#zebra-tex {
+    cursor: pointer;
+    color: transparent;
+    position: absolute;
+    width: 11.5%;
+    height: 20%;
+    right: 6%;
+    top: 80%;
+}
+
+.texsd-img {
+    /* width: 50%; */
 }
 
 /* headlines with lines */
