@@ -9,8 +9,20 @@ html {
 }
 
 /* carousel */
-.slider-pagination {
+/* .slider-pagination {
     display: none;
+} */
+
+.slider-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto !important;
+    user-select: none;
+}
+
+.slider-item > div {
+    margin: 0 30px;
 }
 /* .title {
     color: #242424 !important;
@@ -74,52 +86,71 @@ a {
     color: #0d6e3f;
 }
 
-matex:before {
+.matex {
     font-variant: small-caps;
     font-weight: bold !important;
-    content: "Material Palette";
+    /* content: "Material Palette"; */
 }
 
 #corn-tex {
-    cursor: pointer;
+    cursor: zoom-in;
     color: transparent;
     position: absolute;
     width: 11.5%;
     height: 20%;
-    right: 6%;
-    top: 15%;
+    right: 5.5%;
+    top: 14.5%;
+    user-select: none;
 }
 
 #coral-tex {
-    cursor: pointer;
+    cursor: zoom-in;
     color: transparent;
     position: absolute;
     width: 11.5%;
     height: 20%;
-    right: 6%;
-    top: 36.5%;
+    right: 5.5%;
+    top: 36%;
+    user-select: none;
 }
 
 #giraffe-tex {
-    cursor: pointer;
+    cursor: zoom-in;
     color: transparent;
     position: absolute;
     width: 11.5%;
     height: 20%;
-    right: 6%;
-    top: 58%;
+    right: 5.5%;
+    top: 57.5%;
+    user-select: none;
 }
 
 #zebra-tex {
-    cursor: pointer;
+    cursor: zoom-in;
     color: transparent;
     position: absolute;
     width: 11.5%;
     height: 20%;
-    right: 6%;
-    top: 80%;
+    right: 5.5%;
+    top: 79.5%;
+    user-select: none;
 }
 
+.ref-overlay {
+    width: 70px;
+    height: 19px;
+    position: absolute !important;
+    /* background: cyan; */
+    background: transparent;
+    cursor: help !important;
+}
+
+.carousel-section {
+    overflow: hidden !important;
+    border-radius: 10px;
+    box-shadow: 2px 2px 7px 1px #00000025;
+    padding:1em 1.5rem;
+}
 .texsd-img {
     /* width: 50%; */
 }

@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KBPXMDF7');</script>
-    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EL2BGKWX97"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-EL2BGKWX97');
+    </script>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Material Palette</title>
@@ -16,15 +18,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="icons/sphere.png">
     <link href='https://fonts.googleapis.com/css?family=Inria Sans' rel='stylesheet'>
-    <link rel="stylesheet" href="css/bulma.min.css">
     <!-- <link rel="stylesheet" href="css/bulma-tooltip.min.css"> -->
     <!-- <link href="~bulma-carousel/dist/css/bulma-carousel.min.css" rel="stylesheet"> -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css"> -->
+    <link rel="stylesheet" href="css/bulma.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bulma-tooltip@3.0.2/dist/css/bulma-tooltip.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
+
     <script type="text/javascript" id="MathJax-script" async
         src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
     </script>
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
     <!-- <link rel="stylesheet" href="css/bulma-carousel.min.css"> -->
     <!-- <link rel="stylesheet" href="css/bulma-slider.min.css"> -->
     <!-- <link rel="stylesheet" href="css/fontawesome.all.min.css"> -->
@@ -33,12 +37,6 @@
 </head>
 
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KBPXMDF7"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- <script src="~bulma-carousel/dist/js/bulma-carousel.min.js"></script> -->
-    <!-- End Google Tag Manager (noscript) -->
-    <!-- <div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div> -->
 
     <section class="hero">
         <div class="hero-body">
@@ -46,7 +44,7 @@
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
                         <!-- <h1 class="title is-1 title-header">Materials Palette</h1> -->
-                        <h1 class="title is-1 title-main"><matex></matex>: Extraction of Materials from a Single Image</h1>
+                        <h1 class="title is-1 title-main"><span class="matex">Material Palette</span>: Extraction of Materials from a Single Image</h1>
                         <div class="is-size-5 authors">
                             <span class="author-block">
                                 <a href="https://wonjunior.github.io/">Ivan Lopes</a><sup class="is-size-7"> 1</sup>,</span>
@@ -58,23 +56,15 @@
                         </div>
 
                         <div class="is-size-6 publication-authors">
-                            <span style="margin-right:10px" class="author-block"><sup class="is-size-7">1 </sup><a style="color:black" href="https://astra-vision.github.io/team/">Astra-vision</a>, Inria Paris</span>
+                            <span style="margin-right:10px" class="author-block"><sup class="is-size-7">1 </sup>Inria</span>
                             <span class="author-block"><sup class="is-size-7">2 </sup>University of Oxford</span>
                         </div>
 
                         <div class="is-size-6 column has-text-centered">
                             <div class="publication-links">
                                 <span class="link-block">
-                                    <a class="external-link button is-normal is-rounded is-dark" target="_blank" href="https://arxiv.org/abs/2311.17060">
-                                        <span class="icon">
-                                            <i class="ai ai-arxiv"></i>
-                                        </span>
-                                        <span>arXiv</span>
-                                    </a>
-                                </span>
-                                <span class="link-block">
                                     <!-- <a href="#" class="external-link button is-normal is-rounded is-dark has-tooltip-bottom" data-tooltip="Tooltip Text"> -->
-                                    <a href="#" class="external-link button is-normal is-rounded is-dark">
+                                    <a href="https://github.com/astra-vision/MaterialPalette/releases/download/preprint/material_palette.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
                                             <img src="icons/pdf.png" alt="pdf file" >
                                         </span>
@@ -82,7 +72,15 @@
                                     </a>
                                 </span>
                                 <span class="link-block">
-                                    <a class="external-link button is-normal is-rounded is-dark" href="https://github.com/astra-vision/MaterialPalette" target="_blank">
+                                    <a class="external-link button is-normal is-rounded is-dark" href="#">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a class="external-link button is-normal is-rounded is-dark">
                                         <span class="icon">
                                             <img src="icons/github.png" alt="github repo" >
                                         </span>
@@ -90,7 +88,7 @@
                                     </a>
                                 </span>
                                 <span class="link-block">
-                                    <a href="#" style="cursor:help" class="external-link button is-normal is-rounded is-dark has-tooltip-bottom" data-tooltip="Coming soon!">
+                                    <a href="#" style="cursor:not-allowed" class="external-link button is-normal is-rounded is-dark has-tooltip-bottom" data-tooltip="Coming soon!">
                                         <span class="icon">
                                             <img src="icons/dash.png" alt="dataset" >
                                         </span>
@@ -122,7 +120,7 @@
                 29/11: page currently under construction...
             </div>
             <div class="subtitle has-text-centered">
-                <matex></matex> extracts a palette of PBR materials (albedo, normals, and roughness) from a single real-world image.
+                <span class="matex">Material Palette</span> extracts a palette of PBR materials (albedo, normals, and roughness) from a single real-world image.
             </div>
             <!-- <figure class="image container"> -->
                 <img src="figures/teaser.png">
@@ -166,12 +164,12 @@
         <div class="container is-fullhd">
             <div class="columns is-centered has-text-centered">
                 <div class="column">
-                    <h2 class="title is-3 decorated"><span><img width=30 class="mr-2">Pipeline</span></h2>
+                    <h2 class="title is-3 decorated"><span><img width=30 class="mr-2" src="icons/infrastructure.png">Pipeline</span></h2>
                     <figure class="image">
                         <img src="figures/pipeline.png">
                     </figure>
                     <div class="content is-1 has-text-justified mt-4">
-                        From a single image \(\mathcal{I}\) (left) our method extracts the SVBRDF of dominant materials~(right). Considering a set of regions \(\{\mathcal{R}_1,\cdots,\mathcal{R}_N\}\) from a user or a segmenter <img style="margin-bottom: -6px" src="icons/one.png"></img>, we process each region \(\mathcal{R}_i\) separately following two steps. In <img style="margin-bottom: -6px" src="icons/two.png"></img>, we finetune Stable Diffusion on crops of the region \(P_{\text{C}}\) to learn a concept \(S^*\), which is later used to generate a texture image \(P_\text{SD}\) resembling \(P_{\text{C}}\). Then in <img style="margin-bottom: -6px" src="icons/three.png"></img>, these patches are decomposed into SVBRDF intrinsic maps \((\textbf{A}lbedo, \textbf{N}ormal, \textbf{R}oughness)\) using a multi-task network. Finally, the output of the method is a palette of extracted materials \(\{M_1,\cdots,M_N\}\) corresponding to input regions \(\{\mathcal{R}_1,\cdots,\mathcal{R}_N\}\).
+                        <span class="has-text-weight-bold">Method pipeline.</span> From a single image \(\mathcal{I}\) (left) our method extracts the SVBRDF of dominant materials~(right). Considering a set of regions \(\{\mathcal{R}_1,\cdots,\mathcal{R}_N\}\) from a user or a segmenter <img style="margin-bottom: -6px" src="icons/one.png"></img>, we process each region \(\mathcal{R}_i\) separately following two steps. In <img style="margin-bottom: -6px" src="icons/two.png"></img>, we finetune Stable Diffusion on crops of the region \(P_{\text{C}}\) to learn a concept \(S^*\), which is later used to generate a texture image \(P_\text{SD}\) resembling \(P_{\text{C}}\). Then in <img style="margin-bottom: -6px" src="icons/three.png"></img>, these patches are decomposed into SVBRDF intrinsic maps \((\textbf{A}lbedo, \textbf{N}ormal, \textbf{R}oughness)\) using a multi-task network. Finally, the output of the method is a palette of extracted materials \(\{M_1,\cdots,M_N\}\) corresponding to input regions \(\{\mathcal{R}_1,\cdots,\mathcal{R}_N\}\).
                     </div>
                 </div>
             </div>
@@ -180,56 +178,36 @@
 
     <div id="modal-corn-tex" class="modal">
         <div class="modal-background"></div>
-        <div class="modal-content" style="width:auto">
-          <div class="box has-text-centered p-0" style="background-color: transparent;">
-            <img class="inline-block" src="images/corn_2K_downsample.png" alt="">
-            <!-- Your content -->
-          </div>
-        </div>
+        <img class="modal-content" src="images/corn_2K.png" alt="">
         <button class="modal-close is-large" aria-label="close"></button>
     </div>
 
     <div id="modal-giraffe-tex" class="modal">
         <div class="modal-background"></div>
-        <div class="modal-content" style="width:auto">
-          <div class="box has-text-centered p-0" style="background-color: transparent;">
-            <img class="inline-block" src="images/giraffe_2K_downsample.png" alt="">
-            <!-- Your content -->
-          </div>
-        </div>
+        <img class="modal-content" src="images/giraffe_2K.png" alt="">
         <button class="modal-close is-large" aria-label="close"></button>
     </div>
 
     <div id="modal-coral-tex" class="modal">
         <div class="modal-background"></div>
-        <div class="modal-content" style="width:auto">
-          <div class="box has-text-centered p-0" style="background-color: transparent;">
-            <img class="inline-block" src="images/coral_2K_downsample.png" alt="">
-            <!-- Your content -->
-          </div>
-        </div>
+        <img class="modal-content" src="images/coral_2K.png" alt="">
         <button class="modal-close is-large" aria-label="close"></button>
     </div>
 
     <div id="modal-zebra-tex" class="modal">
         <div class="modal-background"></div>
-        <div class="modal-content" style="width:auto">
-          <div class="box has-text-centered p-0" style="background-color: transparent;">
-            <img class="inline-block" src="images/zebra_2K_downsample.png" alt="">
-            <!-- Your content -->
-          </div>
-        </div>
+        <img class="modal-content" src="images/zebra_2K.png" alt="">
         <button class="modal-close is-large" aria-label="close"></button>
     </div>
 
-    <!-- <button class="js-modal-trigger" data-target="modal-js-example">
-        Open JS example modal
-      </button> -->
     <section class="section"  id="sec:method">
         <div class="container is-fullhd">
           <div class="columns is-centered">
             <div class="column">
                 <h2 class="title is-3 decorated"><span><img width=30 class="mr-2" src="icons/extract.png">Texture extraction</span></h2>
+                <div class="columns is-centered is-italic">
+                    <img src="icons/zoom.png" style="height: 20px; vertical-align: middle; margin-right:5px">Click on our extracted textures to enlarge them!
+                </div>
                 <div class="columns is-centered">
                   <div class="column">
                       <figure class="image" style="position: relative;">
@@ -237,6 +215,10 @@
                         <div id="coral-tex" class="js-modal-trigger" data-target="modal-coral-tex"></div>
                         <div id="giraffe-tex" class="js-modal-trigger" data-target="modal-giraffe-tex"></div>
                         <div id="zebra-tex" class="js-modal-trigger" data-target="modal-zebra-tex"></div>
+                        <div style="left: 24.5%; top: 9%;" class="ref-overlay has-tooltip-bottom" data-tooltip="Texture synthesis using convolutional neural networks, NeurIPS'2015"></div>
+                        <div style="left: 36%; top: 9%;" class="ref-overlay has-tooltip-bottom" data-tooltip="Image quilting for texture synthesis and transfer, ACM TOG'2001"></div>
+                        <div style="left: 47.5%; top: 9%;" class="ref-overlay has-tooltip-bottom" data-tooltip="Learning texture manifolds with the periodic spatial GAN, ICML'2017"></div>
+                        <div style="left: 71%; top: 9%;" class="ref-overlay has-tooltip-bottom" data-tooltip="Scraping textures from natural images for synthesis and editing, ECCV'2022"></div>
                         <img src="figures/extraction.png">
                       </figure>
                       <div class="content has-text-justified mt-2">
@@ -255,7 +237,7 @@
                     <figure class="image">
                       <img src="figures/pl_da.png">
                     </figure>
-                    <div class="content has-text-justified is-italic mt-2">
+                    <div class="content has-text-justified mt-2">
                         <span class="has-text-weight-bold">SVBRDF Unsupervised Domain Adaptation.</span>
                         We train a decomposition network \(f\) on labeled SVBRDF materials \(\mathcal{S}\) and unlabeled target data \(\mathcal{T}\) from our novel \(\mathsf{TexSD}\) dataset. Ultimately, \(\mathcal{T}\) acts as a domain bridge between the SVBRDF dataset and the real domain, <span class="is-italic">ie.</span> patches generated from our extraction method.
                         <!-- We enforce both regression and rendering losses on \(\mathcal{S}\) and \(\mathcal{T}\) using pseudo-maps \(\hat{M}\) extracted by the source-only model \(f^{\mathcal{S}}\) (top). The final adapted model is denoted \(f^{\mathcal{T}}\). -->
@@ -267,41 +249,211 @@
         </div>
     </section>
 
-    <!-- <style>
-        swiper-container {
-      width: 100%;
-      height: 100%;
-    }
+    <section class="section" id="sec:qual">
+        <div class="container is-max-desktop">
+            <h2 class="title is-3 decorated"><span><img width=42 class="mr-2" src="icons/palette.png">Extracted palettes</span></h2>
 
-    swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+            <div class="container m-4">
+                We show palette extraction results using three methods as region proposals: (a) <a href="#section-user">user defined regions</a>, (b) <a style="text-decoration: underline" href="#section-mater" class="has-tooltip-bottom" data-tooltip="Materialistic: Selecting similar materials in images, ACM TOG'2023">Materialistic</a>, and (c) the <a style="text-decoration: underline" href="#section-sam" class="has-tooltip-bottom" data-tooltip="Segment anything, ICCV'2023">Segment Anything Model (SAM)</a>.
+            </div>
 
-    swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+            <section id="section-user" class="section mb-4 carousel-section">
+                <h3 class="title is-4 mb-4 mt-0 decorated">User defined</h3>
+                <div class="container">
+                    <div id="carousel-user" class="carousel">
+                        <div>
+                            <div class="columns">
+                                <img class="is-inline-block" style="max-width:none" src="images/palettes/bathroom_user_crops_p512-256-192-128-64_ct99_imregions.png">
+                            </div>
+                            <div class="columns is-centered" style="height: 100px; width: fit-content;">
+                                <img class="column" style="height:150px, width=150px" src="images/palettes/bathroom_user_crops_p512-256-192-128-64_ct99_layout_spheres-balls.png">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="columns">
+                                <img class="is-inline-block" style="max-width:none" src="images/palettes/kruger_park_user_crops_p512-256-192-128-64_ct99_imregions.png">
+                            </div>
+                            <div class="columns is-centered" style="height: 100px; width: fit-content;">
+                                <img class="column" style="height:100px;width:auto;" src="images/palettes/kruger_park_user_crops_p512-256-192-128-64_ct99_layout_spheres-balls.png">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="columns">
+                                <img class="is-inline-block" style="max-width:none" src="images/palettes/bedroom_user_crops_p512-256-192-128-64_ct99_imregions.png">
+                            </div>
+                            <div class="columns is-centered" style="height: 100px; width: fit-content;">
+                                <img class="column" style="height:100px;width:auto;" src="images/palettes/bedroom_user_crops_p512-256-192-128-64_ct99_layout_spheres-balls.png">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="columns">
+                                <img class="is-inline-block" style="max-width:none" src="images/palettes/market_user_crops_p512-256-192-128-64_ct99_imregions.png">
+                            </div>
+                            <div class="columns is-centered" style="height: 100px; width: fit-content;">
+                                <img class="column" style="height:100px;width:auto;" src="images/palettes/market_user_crops_p512-256-192-128-64_ct99_layout_spheres-balls.png">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="columns">
+                                <img class="is-inline-block" style="max-width:none" src="images/palettes/modern_tub_user_crops_p512-256-192-128-64_ct99_imregions.png">
+                            </div>
+                            <div class="columns is-centered" style="height: 100px; width: fit-content;">
+                                <img class="column" style="height:100px;width:auto;" src="images/palettes/modern_tub_user_crops_p512-256-192-128-64_ct99_layout_spheres-balls.png">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="columns">
+                                <img class="is-inline-block" style="max-width:none" src="images/palettes/brown_brick_house_user_crops_p512-256-192-128-64_ct99_imregions.png">
+                            </div>
+                            <div class="columns is-centered" style="height: 100px; width: fit-content;">
+                                <img class="column" style="height:100px;width:auto;" src="images/palettes/brown_brick_house_user_crops_p512-256-192-128-64_ct99_layout_spheres-balls.png">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="columns">
+                                <img class="is-inline-block" style="max-width:none" src="images/palettes/wooden_door_user_crops_p512-256-192-128-64_ct99_imregions.png">
+                            </div>
+                            <div class="columns is-centered" style="height: 100px; width: fit-content;">
+                                <img class="column" style="height:100px;width:auto;" src="images/palettes/wooden_door_user_crops_p512-256-192-128-64_ct99_layout_spheres-balls.png">
+                            </div>
+                        </div>
 
-    swiper-slide {
-      width: 80%;
-    }
+                        <!-- <div class="has-text-centered"><img class="is-inline-block" style="max-width:none" src=""></div>
+                        <div class="has-text-centered"><img class="is-inline-block" style="max-width:none" src=""></div>
+                        <div class="has-text-centered"><img class="is-inline-block" style="max-width:none" src=""></div>
+                        <div class="has-text-centered"><img class="is-inline-block" style="max-width:none" src=""></div> -->
+                    </div>
+                </div>
+            </section>
 
-    swiper-slide:nth-child(2n) {
-      width: 60%;
-    }
+            <section id="section-mater" class="section mb-4 carousel-section">
+                <h3 class="title is-4 mb-4 mt-0 decorated">Materialistic</h3>
+                <div class="container">
+                    <div id="carousel-mater" class="carousel">
+                        <div>
+                            <div class="columns">
+                                <img class="is-inline-block" style="max-width:none" src="images/palettes/crocodile_mater_crops_p512-256-192-128-64_ct99_imregions.png">
+                            </div>
+                            <div class="columns is-centered" style="height: 100px; width: fit-content;">
+                                <img class="column" style="height:100px;width:auto;" src="images/palettes/crocodile_mater_crops_p512-256-192-128-64_ct99_layout_spheres-balls.png">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="columns">
+                                <img class="is-inline-block" style="max-width:none" src="images/palettes/innsbruck_mater_crops_p512-256-192-128-64_ct99_imregions.png">
+                            </div>
+                            <div class="columns is-centered" style="height: 100px; width: fit-content;">
+                                <img class="column" style="height:100px;width:auto;" src="images/palettes/innsbruck_mater_crops_p512-256-192-128-64_ct99_layout_spheres-balls.png">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="columns">
+                                <img class="is-inline-block" style="max-width:none" src="images/palettes/coffee_shop_mater_crops_p512-256-192-128-64_ct99_imregions.png">
+                            </div>
+                            <div class="columns is-centered" style="height: 100px; width: fit-content;">
+                                <img class="column" style="height:100px;width:auto;" src="images/palettes/coffee_shop_mater_crops_p512-256-192-128-64_ct99_layout_spheres-balls.png">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="columns">
+                                <img class="is-inline-block" style="max-width:none" src="images/palettes/wooden_door_mater_crops_p512-256-192-128-64_ct99_imregions.png">
+                            </div>
+                            <div class="columns is-centered" style="height: 100px; width: fit-content;">
+                                <img class="column" style="height:100px;width:auto;" src="images/palettes/wooden_door_mater_crops_p512-256-192-128-64_ct99_layout_spheres-balls.png">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="columns">
+                                <img class="is-inline-block" style="max-width:none" src="images/palettes/brown_brick_house_mater_crops_p512-256-192-128-64_ct99_imregions.png">
+                            </div>
+                            <div class="columns is-centered" style="height: 100px; width: fit-content;">
+                                <img class="column" style="height:150px, width=150px" src="images/palettes/brown_brick_house_mater_crops_p512-256-192-128-64_ct99_layout_spheres-balls.png">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="columns">
+                                <img class="is-inline-block" style="max-width:none" src="images/palettes/bathroom_mater_crops_p512-256-192-128-64_ct99_imregions.png">
+                            </div>
+                            <div class="columns is-centered" style="height: 100px; width: fit-content;">
+                                <img class="column" style="height:100px;width:auto;" src="images/palettes/bathroom_mater_crops_p512-256-192-128-64_ct99_layout_spheres-balls.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    swiper-slide:nth-child(3n) {
-      width: 40%;
-    }
-    </style> -->
+            <section id="section-sam" class="section carousel-section">
+                <h3 class="title is-4 mb-4 mt-0 decorated">SAM</h3>
+                <div class="container">
+                    <div id="carousel-sam" class="carousel">
+                        <div>
+                            <div class="columns">
+                                <img class="is-inline-block" style="max-width:none" src="images/palettes/fall_modern_sam_crops_p512-256-192-128-64_ct99_imregions.png">
+                            </div>
+                            <div class="columns is-centered" style="height: 100px; width: fit-content;">
+                                <img class="column" style="height:100px;width:auto;" src="images/palettes/fall_modern_sam_crops_p512-256-192-128-64_ct99_layout_spheres-balls.png">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="columns">
+                                <img class="is-inline-block" style="max-width:none" src="images/palettes/colored_brick_sam_crops_p512-256-192-128-64_ct99_imregions.png">
+                            </div>
+                            <div class="columns is-centered" style="height: 100px; width: fit-content;">
+                                <img class="column" style="height:100px;width:auto;" src="images/palettes/colored_brick_sam_crops_p512-256-192-128-64_ct99_layout_spheres-balls.png">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="columns">
+                                <img class="is-inline-block" style="max-width:none" src="images/palettes/jaguar_sam_crops_p512-256-192-128-64_ct99_imregions.png">
+                            </div>
+                            <div class="columns is-centered" style="height: 100px; width: fit-content;">
+                                <img class="column" style="height:100px;width:auto;" src="images/palettes/jaguar_sam_crops_p512-256-192-128-64_ct99_layout_spheres-balls.png">
+                            </div>
+                        </div>
+                        <div>
+                            <div class="columns">
+                                <img class="is-inline-block" style="max-width:none" src="images/palettes/bathroom_sam_crops_p512-256-192-128-64_ct99_imregions.png">
+                            </div>
+                            <div class="columns is-centered" style="height: 100px; width: fit-content;">
+                                <img class="column" style="height:150px, width=150px" src="images/palettes/bathroom_sam_crops_p512-256-192-128-64_ct99_layout_spheres-balls.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
+            <!-- <div class="container my-6">
+                <h2 class="title is-4 has-text-centered"><span><matex></matex> extractions</span></h2>
+                <figure class="image">
+                    <todo>add selection panel to view viz</todo>
+                </figure>
+                <div class="content has-text-justified mt-2">
+                    <span class="has-text-weight-bold">xx.</span> those are the scenes with extracted palettes
+                </div>
+            </div> -->
+
+            <!-- <div class="container my-6">
+                <h2 class="title is-4 has-text-centered"><span>Generated dataset</span></h2>
+                <figure class="image">
+                    <todo>add selection panel to view viz</todo>
+                    <img src="tables/extraction.png">
+                    </figure>
+                <div class="content has-text-justified mt-2">
+                    <span class="has-text-weight-bold">xx.</span> this is the dataset generated using SD using prompt guidance
+                </div>
+            </div> -->
+
+            <!-- <div class="container my-6">
+                <h2 class="title is-4 has-text-centered"><span>Rendered scenes</span></h2>
+                <figure class="image">
+                    <todo>add selection panel to view viz</todo>
+                </figure>
+                <div class="content has-text-justified mt-2">
+                    <span class="has-text-weight-bold">xx.</span> Material insertion in 3D scenes
+                </div>
+            </div> -->
+        </div>
+    </section>
 
     <section class="section" id="sec:texsd">
         <div class="container is-max-desktop">
@@ -405,18 +557,26 @@
           </div>
         </div>
     </section> -->
-
     <section class="section" id="citation">
+        <div class="container is-max-desktop content mb-6">
+            <h2 class="title"><img width=30 class="mr-4" src="icons/ack.png">Acknowledgements</h2>
+            <p>This research project was funded by the French Agence Nationale de la Recherche (ANR) as part of project SIGHT (ANR-20-CE23-0016). It was performed using HPC resources from GENCI-IDRIS (Grant 2023-AD011014389).</p>
+        </div>
+    <!-- </section> -->
+
+    <!-- <section class="section" id="citation"> -->
         <div class="container is-max-desktop content">
             <h2 class="title"><img width=30 class="mr-4" src="icons/citation.png">Consider citing us!</h2>
-            <pre><code>@misc{lopes2023matex,
-    title={Extraction of Materials from a Single Image},
-    author={<a style="color:#0F9D58" href="https://wonjunior.github.io/">Ivan Lopes</a> and <a style="color:#0F9D58" href="https://fabvio.github.io/">Fabio Pizzati</a> and <a style="color:#0F9D58" href="https://team.inria.fr/rits/membres/raoul-de-charette/">Raoul de Charette</a>},
-    year={2023}
-    publisher={arXiv},
-    primaryClass={cs.CV}
-}</code></pre></div>
+            <pre><code>@misc{lopes2023materialpalette,
+                title={Material Palette: Extraction of Materials from a Single Image},
+                author={<a style="color:#0F9D58" href="https://wonjunior.github.io/">Ivan Lopes</a> and <a style="color:#0F9D58" href="https://fabvio.github.io/">Fabio Pizzati</a> and <a style="color:#0F9D58" href="https://team.inria.fr/rits/membres/raoul-de-charette/">Raoul de Charette</a>},
+                year={2023}
+                publisher={arXiv},
+                primaryClass={cs.CV}
+            }</code></pre>
+        </div>
     </section>
+
 
     <footer class="footer p-5">
         <div class="container">
@@ -487,4 +647,31 @@
 });
 </script>
 
+<<<<<<< HEAD
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+=======
+<!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script> -->
+
+<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+<script>
+    bulmaCarousel.attach('#carousel-mater', {
+        slidesToScroll: 2,
+        slidesToShow: 3,
+        pagination: false,
+        infinite: true
+    });
+    bulmaCarousel.attach('#carousel-sam', {
+        slidesToScroll: 2,
+        slidesToShow: 3,
+        pagination: false,
+        infinite: true
+    });
+    bulmaCarousel.attach('#carousel-user', {
+        slidesToScroll: 2,
+        slidesToShow: 3,
+        pagination: false,
+        infinite: true
+    });
+    // a[0].next()
+</script>
+>>>>>>> 3c30d25 (update project page)
