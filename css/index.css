@@ -52,7 +52,9 @@ pre {
 a {
     color: #1e88e5;
 }
-
+.icon {
+    margin-right: 0.4em !important;
+}
 /* Custom classes */
 .footer .icon-link {
     font-size: 25px;
@@ -144,17 +146,25 @@ a {
     background: transparent;
     cursor: help !important;
 }
-
+/* .modal-card, .modal-content {
+    width: 80% !important;
+    height: auto;
+} */
 .carousel-section {
     overflow: hidden !important;
     border-radius: 10px;
-    box-shadow: 2px 2px 7px 1px #00000025;
-    padding:1em 1.5rem;
+    padding: 1em 1.5rem;
+    border: 2px solid  #c6c6c629;
+}
+.has-tooltip-bottom {
+    cursor: default !important;
 }
 .texsd-img {
     /* width: 50%; */
 }
-
+.table td {
+    border: 0
+}
 /* headlines with lines */
 .decorated{
     overflow: hidden;

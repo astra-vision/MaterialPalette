@@ -16,7 +16,7 @@
     <meta name="description" content="Extraction of PBR Materials from a Single Image">
     <meta name="keywords" content="Rendering, PBR, SVBRDF estimation, Stable Diffusion, Material extraction, texture extraction, Textual inversion, Dreambooth, LoRA">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="icons/sphere.png">
+    <link rel="icon" type="image/x-icon" href="icons/matpal_favicon.png">
     <link href='https://fonts.googleapis.com/css?family=Inria Sans' rel='stylesheet'>
     <!-- <link rel="stylesheet" href="css/bulma-tooltip.min.css"> -->
     <!-- <link href="~bulma-carousel/dist/css/bulma-carousel.min.css" rel="stylesheet"> -->
@@ -90,7 +90,7 @@
                                 <span class="link-block">
                                     <a href="#" style="cursor:not-allowed" class="external-link button is-normal is-rounded is-dark has-tooltip-bottom" data-tooltip="Coming soon!">
                                         <span class="icon">
-                                            <img src="icons/dash.png" alt="dataset" >
+                                            <img src="icons/tex_white.png" alt="dataset" >
                                         </span>
                                         <span>dataset</span>
                                     </a>
@@ -116,14 +116,18 @@
 
     <section class="hero">
         <div class="container is-fullhd">
-            <div class="subtitle has-text-centered is-italic" style="color: red">
+            <!-- <div class="subtitle has-text-centered is-italic" style="color: red">
                 29/11: page currently under construction...
-            </div>
+            </div> -->
             <div class="subtitle has-text-centered">
-                <span class="matex">Material Palette</span> extracts a palette of PBR materials (albedo, normals, and roughness) from a single real-world image.
+                <span class="matex">Material Palette</span> extracts a palette of PBR materials (albedo \(A\), normals \(N\), and roughness \(R\)) from a single real-world image.
             </div>
+            <video autoplay muted>
+                <source src="media/teaser.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                  <!-- <img src="figures/teaser.png"> -->
+            </video>
             <!-- <figure class="image container"> -->
-                <img src="figures/teaser.png">
             <!-- </figure> -->
         </div>
     </section>
@@ -132,7 +136,7 @@
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column is-four-fifths">
-                    <h2 class="title is-3 decorated"><span><img width=30 class="mr-2" src="icons/video.png">Demo</span></h2>
+                    <h2 class="title is-3 decorated"><span><img width=30 class="mr-2" src="icons/video.png">Video</span></h2>
                     <!-- <div class="content has-text-justified is-italic">
                     </div> -->
                     <video controls>
@@ -169,7 +173,7 @@
                         <img src="figures/pipeline.png">
                     </figure>
                     <div class="content is-1 has-text-justified mt-4">
-                        <span class="has-text-weight-bold">Method pipeline.</span> From a single image \(\mathcal{I}\) (left) our method extracts the SVBRDF of dominant materials~(right). Considering a set of regions \(\{\mathcal{R}_1,\cdots,\mathcal{R}_N\}\) from a user or a segmenter <img style="margin-bottom: -6px" src="icons/one.png"></img>, we process each region \(\mathcal{R}_i\) separately following two steps. In <img style="margin-bottom: -6px" src="icons/two.png"></img>, we finetune Stable Diffusion on crops of the region \(P_{\text{C}}\) to learn a concept \(S^*\), which is later used to generate a texture image \(P_\text{SD}\) resembling \(P_{\text{C}}\). Then in <img style="margin-bottom: -6px" src="icons/three.png"></img>, these patches are decomposed into SVBRDF intrinsic maps \((\textbf{A}lbedo, \textbf{N}ormal, \textbf{R}oughness)\) using a multi-task network. Finally, the output of the method is a palette of extracted materials \(\{M_1,\cdots,M_N\}\) corresponding to input regions \(\{\mathcal{R}_1,\cdots,\mathcal{R}_N\}\).
+                        <span class="has-text-weight-bold">Method pipeline.</span> From a single image \(\mathcal{I}\) (left) our method extracts the SVBRDF of dominant materials~(right). Considering a set of regions \(\{\mathcal{R}_1,\cdots,\mathcal{R}_N\}\) from a user or a segmenter <img style="margin-bottom: -6px" src="icons/one.png"></img>, we process each region \(\mathcal{R}_i\) separately following two steps. In <img style="margin-bottom: -6px" src="icons/two.png"></img>, we finetune Stable Diffusion on crops of the region \(P_{\text{C}}\) to learn a concept \(S^*\), which is later used to generate a texture image \(P_\text{SD}\) resembling \(P_{\text{C}}\). Then in <img style="margin-bottom: -6px" src="icons/three.png"></img>, these patches are decomposed into SVBRDF intrinsic maps (albedo \(A\), normals \(N\), and roughness \(R\)) using a multi-task network. Finally, the output of the method is a palette of extracted materials \(\{M_1,\cdots,M_N\}\) corresponding to input regions \(\{\mathcal{R}_1,\cdots,\mathcal{R}_N\}\).
                     </div>
                 </div>
             </div>
@@ -178,25 +182,25 @@
 
     <div id="modal-corn-tex" class="modal">
         <div class="modal-background"></div>
-        <img class="modal-content" src="images/corn_2K.png" alt="">
+        <img class="modal-content" src="images/matex/corn_2K.png" alt="">
         <button class="modal-close is-large" aria-label="close"></button>
     </div>
 
     <div id="modal-giraffe-tex" class="modal">
         <div class="modal-background"></div>
-        <img class="modal-content" src="images/giraffe_2K.png" alt="">
+        <img class="modal-content" src="images/matex/giraffe_2K.png" alt="">
         <button class="modal-close is-large" aria-label="close"></button>
     </div>
 
     <div id="modal-coral-tex" class="modal">
         <div class="modal-background"></div>
-        <img class="modal-content" src="images/coral_2K.png" alt="">
+        <img class="modal-content" src="images/matex/coral_2K.png" alt="">
         <button class="modal-close is-large" aria-label="close"></button>
     </div>
 
     <div id="modal-zebra-tex" class="modal">
         <div class="modal-background"></div>
-        <img class="modal-content" src="images/zebra_2K.png" alt="">
+        <img class="modal-content" src="images/matex/zebra_2K.png" alt="">
         <button class="modal-close is-large" aria-label="close"></button>
     </div>
 
@@ -223,7 +227,7 @@
                       </figure>
                       <div class="content has-text-justified mt-2">
                           <!-- <span class="has-text-weight-bold">Domain adaptation for SVBRDF maps estimation.</span>  -->
-                          <span class="has-text-weight-bold">Texture extraction.</span> We compare texture extracted from natural images with 4 baselines, either patch-based or region-based. Different from baselines, our method is based on a learned concept \(S^*\) which, when used for generating samples, corrects artifacts, is not limited to a fixed resolution, and is fully tileable, resulting in homogeneous textures. We show outputs of our method at a resolution of  \(\texttt{2048*2048}\), alongside <span style="color:#df082a">\(\times\textbf{2}\)</span> and <span style="color:#0054b9">\(\times\textbf{4}\)</span> zooms.
+                          <span class="has-text-weight-bold">Texture extraction.</span> We compare texture extracted from natural images with 4 baselines, either patch-based or region-based. Different from baselines, our method is based on a learned concept \(S^*\) which, when used for generating samples, corrects artifacts, is not limited to a fixed resolution, and is fully tileable, resulting in homogeneous textures. We show outputs of our method at a resolution of  \(\mathsf{2048x2048}\), click on our textures to enlarge them!
                           <!-- We train a decomposition network on data extracted by a text-to-image diffusion model \(\mathcal{T}\), along with materials from a synthetic dataset \(\mathcal{S}\). We enforce both regression \(\mathcal{L}_{rec}\) and rendering \(\mathcal{L}_{ren}\) losses using pseudo-masks \(\hat{M}\) extracted by a model trained on \(\mathcal{S}\). -->
                       </div>
                   </div>
@@ -250,14 +254,14 @@
     </section>
 
     <section class="section" id="sec:qual">
-        <div class="container is-max-desktop">
+        <div class="container is-fullhd">
             <h2 class="title is-3 decorated"><span><img width=42 class="mr-2" src="icons/palette.png">Extracted palettes</span></h2>
 
-            <div class="container m-4">
+            <div class="container m-5">
                 We show palette extraction results using three methods as region proposals: (a) <a href="#section-user">user defined regions</a>, (b) <a style="text-decoration: underline" href="#section-mater" class="has-tooltip-bottom" data-tooltip="Materialistic: Selecting similar materials in images, ACM TOG'2023">Materialistic</a>, and (c) the <a style="text-decoration: underline" href="#section-sam" class="has-tooltip-bottom" data-tooltip="Segment anything, ICCV'2023">Segment Anything Model (SAM)</a>.
             </div>
 
-            <section id="section-user" class="section mb-4 carousel-section">
+            <section id="section-user" class="section my-5 mx-3 carousel-section">
                 <h3 class="title is-4 mb-4 mt-0 decorated">User defined</h3>
                 <div class="container">
                     <div id="carousel-user" class="carousel">
@@ -326,7 +330,7 @@
                 </div>
             </section>
 
-            <section id="section-mater" class="section mb-4 carousel-section">
+            <section id="section-mater" class="section my-5 mx-3 carousel-section">
                 <h3 class="title is-4 mb-4 mt-0 decorated">Materialistic</h3>
                 <div class="container">
                     <div id="carousel-mater" class="carousel">
@@ -382,8 +386,8 @@
                 </div>
             </section>
 
-            <section id="section-sam" class="section carousel-section">
-                <h3 class="title is-4 mb-4 mt-0 decorated">SAM</h3>
+            <section id="section-sam" class="section mt-5 mx-3 carousel-section">
+                <h3 class="title is-4 mb-4 mt-0 decorated">Segment Anything Model</h3>
                 <div class="container">
                     <div id="carousel-sam" class="carousel">
                         <div>
@@ -422,99 +426,389 @@
                 </div>
             </section>
 
-            <!-- <div class="container my-6">
-                <h2 class="title is-4 has-text-centered"><span><matex></matex> extractions</span></h2>
-                <figure class="image">
-                    <todo>add selection panel to view viz</todo>
-                </figure>
-                <div class="content has-text-justified mt-2">
-                    <span class="has-text-weight-bold">xx.</span> those are the scenes with extracted palettes
-                </div>
-            </div> -->
+            <p class="py-3"></p>
+            <div class="container m-5">
+                Here are additional sphere renderings of materials extracted from in-the-wild images.
+            </div>
 
-            <!-- <div class="container my-6">
-                <h2 class="title is-4 has-text-centered"><span>Generated dataset</span></h2>
-                <figure class="image">
-                    <todo>add selection panel to view viz</todo>
-                    <img src="tables/extraction.png">
-                    </figure>
-                <div class="content has-text-justified mt-2">
-                    <span class="has-text-weight-bold">xx.</span> this is the dataset generated using SD using prompt guidance
-                </div>
-            </div> -->
+            <div class="container">
+                <table class="table is-narrow mb-0" style="background-color: transparent; border-collapse: collapse;">
+                    <tbody>
 
-            <!-- <div class="container my-6">
-                <h2 class="title is-4 has-text-centered"><span>Rendered scenes</span></h2>
-                <figure class="image">
-                    <todo>add selection panel to view viz</todo>
-                </figure>
-                <div class="content has-text-justified mt-2">
-                    <span class="has-text-weight-bold">xx.</span> Material insertion in 3D scenes
-                </div>
-            </div> -->
+                        <tr>
+                            <td><div><img src="images/matpal/matpal_sphere_1.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_2.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_3.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_4.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_5.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_6.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_7.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_8.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_9.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td><div><img src="images/matpal/matpal_sphere_10.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_11.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_12.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_13.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_14.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_15.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_16.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_17.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_18.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td><div><img src="images/matpal/matpal_sphere_19.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_20.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_21.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_22.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_23.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_24.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_25.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_26.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_27.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td><div><img src="images/matpal/matpal_sphere_28.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_29.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_30.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_31.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_32.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_33.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_34.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_35.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_36.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td><div><img src="images/matpal/matpal_sphere_37.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_38.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_39.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_40.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_41.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_42.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_43.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_44.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_45.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td><div><img src="images/matpal/matpal_sphere_46.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_47.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_48.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_49.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_50.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_51.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_52.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_53.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_54.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td><div><img src="images/matpal/matpal_sphere_55.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_56.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_57.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_58.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_59.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_60.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_60.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_61.png"></div></td>
+                            <td><div><img src="images/matpal/matpal_sphere_62.png"></div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- <iframe style="border:none;border-radius:3px;width:400px;height:400px;" src="https://cdn.pbr.one/main/material-shading.html#color_url=https://i.imgur.com/yd0OOx7.jpg&amp;ambientocclusion_url=https://i.imgur.com/y9P6ce4.jpg&amp;displacement_url=https://i.imgur.com/C2khofQ.jpg&amp;normal_url=https://i.imgur.com/HYYS9tZ.jpg&amp;roughness_url=https://i.imgur.com/ouTJ5jn.jpg&amp;geometry_type=sphere&gui_enable=-1"></iframe> -->
+
         </div>
     </section>
 
     <section class="section" id="sec:texsd">
-        <div class="container is-max-desktop">
-            <h2 class="title is-3 decorated"><span><img width=30 class="mr-2" src="icons/texture_gray.png">Supporting dataset: \(\mathsf{texSD}\)</span></h2>
+        <div class="container is-fullhd">
+            <h2 class="title is-3 decorated"><span><img width=30 class="mr-2" src="icons/eval.png">End to end evaluation</span></h2>
+
+            <div class="container m-5">
+                To evaluate our method end-to-end, we first generate images by rendering 3D scenes with edited materials. After applying <span class="matex">Material Palette</span> to extract the materials (lower row), we can assess the performance by comparing it with the ground-truth decompositions (upper row). For all examples below, we show the albedo, normals, and roughness maps (left to right).
+            </div>
+            <div class="columns is-centered is-italic">
+                <img src="icons/zoom.png" style="height: 20px; vertical-align: middle; margin-right:5px">Click on the decomposition maps to enlarge them!
+            </div>
 
             <div class="container">
-                <table class="table is-narrow" style="background-color: transparent">
+                <table class="table is-narrow mb-0" style="background-color: transparent; border-collapse: collapse;">
                     <tbody>
-
                         <tr>
-                            <td><div class="has-tooltip-bottom" data-tooltip="zebra fur"><img src="images/texsd/zebrafur_004.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="bamboo"><img src="images/texsd/bamboo_016.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="brick wall"><img src="images/texsd/brickwall_037.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="candy"><img src="images/texsd/candy_021.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="corduroy"><img src="images/texsd/corduroy_052.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="damask"><img src="images/texsd/damask_045.png"></div></td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-1"><img src="images/end2end/extracted_1.png"></div>
+                                <div id="modal-extracted-1" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_1.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-2"><img src="images/end2end/extracted_2.png"></div>
+                                <div id="modal-extracted-2" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_2.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-3"><img src="images/end2end/extracted_3.png"></div>
+                                <div id="modal-extracted-3" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_3.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
                         </tr>
 
                         <tr>
-                            <td><div class="has-tooltip-bottom" data-tooltip="granite"><img src="images/texsd/granite_033.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="fabric"><img src="images/texsd/fabric_049.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="fur"><img src="images/texsd/fur_015.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="checkered pattern"><img src="images/texsd/checkeredpattern_007.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="checkered pattern"><img src="images/texsd/checkeredpattern_016.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="fur"><img src="images/texsd/fur_049.png"></div></td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-4"><img src="images/end2end/extracted_4.png"></div>
+                                <div id="modal-extracted-4" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_4.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-5"><img src="images/end2end/extracted_5.png"></div>
+                                <div id="modal-extracted-5" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_5.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-6"><img src="images/end2end/extracted_6.png"></div>
+                                <div id="modal-extracted-6" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_6.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
                         </tr>
 
                         <tr>
-                            <td><div class="has-tooltip-bottom" data-tooltip="corduroy"><img src="images/texsd/corduroy_055.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="giraffe fur"><img src="images/texsd/giraffefur_066.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="gravel"><img src="images/texsd/gravel_054.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="fur"><img src="images/texsd/fur_016.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="leather"><img src="images/texsd/leather_052.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="marble"><img src="images/texsd/marble_062.png"></div></td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-7"><img src="images/end2end/extracted_7.png"></div>
+                                <div id="modal-extracted-7" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_7.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-8"><img src="images/end2end/extracted_8.png"></div>
+                                <div id="modal-extracted-8" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_8.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-9"><img src="images/end2end/extracted_9.png"></div>
+                                <div id="modal-extracted-9" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_9.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
                         </tr>
 
                         <tr>
-                            <td><div class="has-tooltip-bottom" data-tooltip="marble"><img src="images/texsd/marble_076.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="onyx"><img src="images/texsd/onyx_051.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="marble mosaic"><img src="images/texsd/marblemosaic_050.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="oakwood"><img src="images/texsd/oakwood_057.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="painted wood"><img src="images/texsd/paintedwood_032.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="pebbles"><img src="images/texsd/pebbles_019.png"></div></td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-10"><img src="images/end2end/extracted_10.png"></div>
+                                <div id="modal-extracted-10" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_10.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-11"><img src="images/end2end/extracted_11.png"></div>
+                                <div id="modal-extracted-11" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_11.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-12"><img src="images/end2end/extracted_12.png"></div>
+                                <div id="modal-extracted-12" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_12.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
                         </tr>
 
                         <tr>
-                            <td><div class="has-tooltip-bottom" data-tooltip="pinewood"><img src="images/texsd/pinewood_052.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="procelain"><img src="images/texsd/porcelain_008.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="quartzite top"><img src="images/texsd/quartzitetop_023.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="tiger fur"><img src="images/texsd/tigerfur_075.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="rock"><img src="images/texsd/rock_012.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="rustic wood"><img src="images/texsd/rusticwood_006.png"></div></td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-13"><img src="images/end2end/extracted_13.png"></div>
+                                <div id="modal-extracted-13" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_13.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-14"><img src="images/end2end/extracted_14.png"></div>
+                                <div id="modal-extracted-14" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_14.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-15"><img src="images/end2end/extracted_15.png"></div>
+                                <div id="modal-extracted-15" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_15.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
                         </tr>
 
                         <tr>
-                            <td><div class="has-tooltip-bottom" data-tooltip="slate"><img src="images/texsd/slate_037.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="snake skin"><img src="images/texsd/snakeskin_044.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="terrazzo"><img src="images/texsd/terrazzo_009.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="tiger fur"><img src="images/texsd/tigerfur_000.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="resin"><img src="images/texsd/resin_045.png"></div></td>
-                            <td><div class="has-tooltip-bottom" data-tooltip="wood floor"><img src="images/texsd/woodfloor_072.png"></div></td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-16"><img src="images/end2end/extracted_16.png"></div>
+                                <div id="modal-extracted-16" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_16.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-17"><img src="images/end2end/extracted_17.png"></div>
+                                <div id="modal-extracted-17" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_17.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-18"><img src="images/end2end/extracted_18.png"></div>
+                                <div id="modal-extracted-18" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_18.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-19"><img src="images/end2end/extracted_19.png"></div>
+                                <div id="modal-extracted-19" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_19.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-20"><img src="images/end2end/extracted_20.png"></div>
+                                <div id="modal-extracted-20" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_20.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-21"><img src="images/end2end/extracted_21.png"></div>
+                                <div id="modal-extracted-21" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_21.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-22"><img src="images/end2end/extracted_22.png"></div>
+                                <div id="modal-extracted-22" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_22.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-23"><img src="images/end2end/extracted_23.png"></div>
+                                <div id="modal-extracted-23" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_23.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-24"><img src="images/end2end/extracted_24.png"></div>
+                                <div id="modal-extracted-24" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_24.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-25"><img src="images/end2end/extracted_25.png"></div>
+                                <div id="modal-extracted-25" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_25.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-26"><img src="images/end2end/extracted_26.png"></div>
+                                <div id="modal-extracted-26" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_26.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-27"><img src="images/end2end/extracted_27.png"></div>
+                                <div id="modal-extracted-27" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_27.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-28"><img src="images/end2end/extracted_28.png"></div>
+                                <div id="modal-extracted-28" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_28.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-29"><img src="images/end2end/extracted_29.png"></div>
+                                <div id="modal-extracted-29" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_29.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="cursor: zoom-in" class="js-modal-trigger" data-target="modal-extracted-30"><img src="images/end2end/extracted_30.png"></div>
+                                <div id="modal-extracted-30" class="modal">
+                                    <div class="modal-background"></div>
+                                    <img class="modal-content" style="width:80%" src="images/end2end/extracted_30.png" alt="">
+                                    <button class="modal-close is-large" aria-label="close"></button>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -522,41 +816,115 @@
         </div>
     </section>
 
-    <!-- <section class="section"  id="sec:quant">
-        <div class="container is-max-desktop">
-          <h2 class="title is-3 decorated"><span><img width=30 class="mr-2" src="icons/graph.png">Quantitative results</span></h2>
-          <div class="columns is-centered">
-            <div class="column">
-                <h2 class="title is-4 has-text-centered"><span>Full pipeline</span></h2>
-                <div class="columns is-centered">
-                  <div class="column">
-                      <figure class="image">
-                        <img src="tables/extraction.png">
-                      </figure>
-                      <div class="content has-text-justified mt-2">
-                          <span class="has-text-weight-bold">End-to-end evaluation.</span> We evaluate our ability to extract materials resembling PBR datasets such as \(\text{AmbientCG}\) over a fixed set of classes. We successfully demonstrate that <matex></matex> extracts materials with class-wise specificities, using either ground truth labels \(\text{OpenSurfaces}\) segmentation masks (\(\text{OS}\)) or using \(\text{DINO}\) / \(\text{SAM}\) as segmenters.
-                      </div>
-                  </div>
-                </div>
-              </div>
+    <section class="section" id="sec:texsd">
+        <div class="container is-fullhd">
+            <h2 class="title is-3 decorated"><span><img width=30 class="mr-2" src="icons/tex.png">Our texture dataset: \(\mathsf{texSD}\)</span></h2>
 
-            <div class="column">
-              <h2 class="title is-4 has-text-centered"><span>Decomposition</span></h2>
-              <div class="columns is-centered">
-                <div class="column">
-                    <figure class="image">
-                      <img id="img_id" src="tables/decomposition_id.png">
-                      <img id="img_ood" class="is-hidden" src="tables/decomposition_ood.png">
-                    </figure>
-                    <div class="content has-text-justified mt-2">
-                        <span class="has-text-weight-bold">Decomposition evaluation.</span> <button onclick="toggle_visible()" class="button button-toggle is-link has-text-left" id="id_od_toggle"><img width=20 class="mr-2" src="icons/eye.png"><span>OOD</span></button> Evaluation of domain adaptation performances on In-Distribution (ID) and Out-Of-Distribution (OOD). \(MSE\) metrics are in \(10e1\). \(\Delta_{ANR}\) measures the relative performance over \(A,N,R\) \(\textit{wrt.}\) the source-only model trained on \(\text{AmbientCG}\). Our adaptation strategy outperforms the baselines and preserves generalization abilities on OOD samples. <todo>update w/ new table</todo>
-                    </div>
-                </div>
-              </div>
+            <div class="subtitle has-text-centered" style="color:#B74D4D">
+                - Full dataset coming soon -
             </div>
-          </div>
+
+            <div class="container m-5">
+                We generate a high-resolution texture dataset by prompting a pre-trained Stable Diffusion model. More details can be found in our <a href="https://arxiv.org/abs/2311.17060">preprint</a>.
+            </div>
+
+            <div class="container">
+                <table class="table is-narrow mb-0" style="background-color: transparent; border-collapse: collapse;">
+                    <tbody>
+
+                        <tr>
+                            <td><div class="has-tooltip-bottom" data-tooltip="pinewood"><img src="images/texsd/pinewood_052.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="zebra fur"><img src="images/texsd/zebrafur_051.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="bamboo"><img src="images/texsd/bamboo_016.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="brick wall"><img src="images/texsd/brickwall_037.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="candy"><img src="images/texsd/candy_021.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="corduroy"><img src="images/texsd/corduroy_052.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="damask"><img src="images/texsd/damask_045.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="granite"><img src="images/texsd/granite_033.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="fabric"><img src="images/texsd/fabric_049.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="has-tooltip-bottom" data-tooltip="wicker"><img src="images/texsd/wicker_053.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="giraffe fur"><img src="images/texsd/giraffefur_066.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="concrete"><img src="images/texsd/concrete_051.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="tiger fur"><img src="images/texsd/tigerfur_037.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="leather"><img src="images/texsd/leather_052.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="marble"><img src="images/texsd/marble_062.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="marble"><img src="images/texsd/marble_076.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="checkered pattern"><img src="images/texsd/checkeredpattern_007.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="marble mosaic"><img src="images/texsd/marblemosaic_050.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="has-tooltip-bottom" data-tooltip="wool"><img src="images/texsd/wool_067.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="fur"><img src="images/texsd/fur_049.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="oakwood"><img src="images/texsd/oakwood_057.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="painted wood"><img src="images/texsd/paintedwood_032.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="pebbles"><img src="images/texsd/pebbles_019.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="zebra fur"><img src="images/texsd/zebrafur_004.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="procelain"><img src="images/texsd/porcelain_008.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="quartzite top"><img src="images/texsd/quartzitetop_023.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="tiger fur"><img src="images/texsd/tigerfur_054.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="has-tooltip-bottom" data-tooltip="marble mosaic"><img src="images/texsd/marblemosaic_031.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="checkered pattern"><img src="images/texsd/checkeredpattern_016.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="rock"><img src="images/texsd/rock_012.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="rustic wood"><img src="images/texsd/rusticwood_006.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="slate"><img src="images/texsd/slate_037.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="snake skin"><img src="images/texsd/snakeskin_044.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="terrazzo"><img src="images/texsd/terrazzo_009.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="tiger fur"><img src="images/texsd/tigerfur_000.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="resin"><img src="images/texsd/resin_045.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="has-tooltip-bottom" data-tooltip="candy"><img src="images/texsd/candy_072.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="wood floor"><img src="images/texsd/woodfloor_072.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="cork"><img src="images/texsd/cork_071.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="crystal"><img src="images/texsd/crystal_014.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="fur"><img src="images/texsd/fur_000.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="granite"><img src="images/texsd/granite_036.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="grass"><img src="images/texsd/grass_007.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="gravel"><img src="images/texsd/gravel_011.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="clay"><img src="images/texsd/clay_058.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="has-tooltip-bottom" data-tooltip="corduroy"><img src="images/texsd/corduroy_055.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="hammered velvet"><img src="images/texsd/hammeredvelvet_034.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="herring bone"><img src="images/texsd/herringbone_044.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="lava"><img src="images/texsd/lava_007.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="marble mosaic"><img src="images/texsd/marblemosaic_016.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="moss"><img src="images/texsd/moss_039.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="onyx"><img src="images/texsd/onyx_037.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="painted plaster"><img src="images/texsd/paintedplaster_072.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="veneer"><img src="images/texsd/veneer_043.png"></div></td>
+                        </tr>
+
+                        <tr>
+                            <td><div class="has-tooltip-bottom" data-tooltip="shells"><img src="images/texsd/shells_038.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="slate"><img src="images/texsd/slate_044.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="stone wall"><img src="images/texsd/stonewall_011.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="straw bale"><img src="images/texsd/strawbale_043.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="terracotta"><img src="images/texsd/terracotta_035.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="bark"><img src="images/texsd/bark_060.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="travertine"><img src="images/texsd/travertine_074.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="onyx"><img src="images/texsd/onyx_051.png"></div></td>
+                            <td><div class="has-tooltip-bottom" data-tooltip="bamboo"><img src="images/texsd/bamboo_070.png"></div></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <div class="has-text-centered">
+                    this is only a small preview!
+                </div>
+            </div>
         </div>
-    </section> -->
+    </section>
+
     <section class="section" id="citation">
         <div class="container is-max-desktop content mb-6">
             <h2 class="title"><img width=30 class="mr-4" src="icons/ack.png">Acknowledgements</h2>
@@ -567,12 +935,12 @@
     <!-- <section class="section" id="citation"> -->
         <div class="container is-max-desktop content">
             <h2 class="title"><img width=30 class="mr-4" src="icons/citation.png">Consider citing us!</h2>
-            <pre><code>@misc{lopes2023materialpalette,
-    title={Material Palette: Extraction of Materials from a Single Image},
-    author={<a style="color:#0F9D58" href="https://wonjunior.github.io/">Ivan Lopes</a> and <a style="color:#0F9D58" href="https://fabvio.github.io/">Fabio Pizzati</a> and <a style="color:#0F9D58" href="https://team.inria.fr/rits/membres/raoul-de-charette/">Raoul de Charette</a>},
-    year={2023}
-    publisher={arXiv},
-    primaryClass={cs.CV}
+            <pre><code>@inproceedings{lopes2023material,
+    author = {<a style="color:#0F9D58" href="https://wonjunior.github.io/">Lopes, Ivan</a> and <a style="color:#0F9D58" href="https://fabvio.github.io/">Pizzati, Fabio</a> and <a style="color:#0F9D58" href="https://team.inria.fr/rits/membres/raoul-de-charette/">de Charette, Raoul</a>},
+    title = {Material Palette: Extraction of Materials from a Single Image},
+    booktitle = {arXiv},
+    year = {2023},
+    project = {<a style="color:#0F9D58" href="https://astra-vision.github.io/MaterialPalette/">https://astra-vision.github.io/MaterialPalette/</a>}
 }</code></pre>
         </div>
     </section>
