@@ -74,11 +74,11 @@ This is the official repository of [**Material Palette**](https://astra-vision.g
     conda activate matpal
     ```
 
- 4. If you are looking to perform decomposition, download our pretrained model:
+ 4. If you are looking to perform decomposition, download our pretrained model and untar the archive:
     ```
-    wget https://github.com/astra-vision/MaterialPalette/archive/refs/heads/model.ckpt
+    wget https://github.com/astra-vision/MaterialPalette/releases/download/weights/model.tar.gz
     ```
-    <sup>This is not required if your are only looking to perform texture extraction</sup>
+    <sup>This is not required if you are only looking to perform texture extraction</sup>
 
 <!--
 In case you want to retrain the source model, you can download the AmbientCG samples using the following command (`outdir` is the directory where the dataset will be downloaded to):
