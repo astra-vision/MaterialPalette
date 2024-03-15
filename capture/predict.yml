@@ -1,0 +1,26 @@
+archi: densemtl
+mode: predict
+logger:
+  project: ae_acg
+data:
+  batch_size: 1
+  num_workers: 10
+  input_size: 512
+  predict_ds: sd
+  predict_list: data/matlist/pbrsd_v2
+trainer:
+  accelerator: gpu
+  devices: 1
+  precision: 16
+routine:
+  lr: 2e-5
+loss:
+  use_source: True
+  use_target: False
+  reg_weight: 1
+  render_weight: 1
+  n_random_configs: 3
+  n_symmetric_configs: 6
+viz:
+  n_batches_shown: 5
+  log_every_n_epoch: 5
