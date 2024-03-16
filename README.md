@@ -23,7 +23,7 @@
 
 </div>
 
-https://github.com/wonjunior/readme/assets/30524163/1f5d8d3f-e7f0-449e-8230-bd076cca7884
+https://github.com/astra-vision/MaterialPalette/assets/30524163/44e45e58-7c7d-49a3-8b6e-ec6b99cf9c62
 
 
 <!--ts-->
