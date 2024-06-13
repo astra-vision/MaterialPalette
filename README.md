@@ -38,10 +38,9 @@ https://github.com/astra-vision/MaterialPalette/assets/30524163/44e45e58-7c7d-49
 * [Licence](#license)
 <!--te-->
 
-## Todo
+## 🚨 Todo
 
-- 🚨 Release of the <i><b>TexSD</b></i> dataset!
-- 🚨 3D rendering script.
+- 3D rendering script.
 
 ## Overview
 
