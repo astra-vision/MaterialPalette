@@ -14,8 +14,8 @@
 
 [![arXiv](https://img.shields.io/badge/arXiv-_-darkgreen?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2311.17060)
 [![Project page](https://img.shields.io/badge/🚀_Project_Page-_-darkgreen?style=flat-square)](https://astra-vision.github.io/MaterialPalette/)
-[![cvf](https://img.shields.io/badge/CVPR_2024-_-darkgreen?style=flat-square)](https://cvpr.thecvf.com/Conferences/2024/AcceptedPapers#:~:text=Material%20Palette%3A%20Extraction%20of%20Materials%20from%20a%20Single%20Image)
-[![dataset](https://img.shields.io/badge/🤗_dataset-(soon)-darkred?style=flat-square)](#)
+[![cvf](https://img.shields.io/badge/CVPR_2024-_-darkgreen?style=flat-square)](https://openaccess.thecvf.com/content/CVPR2024/html/Lopes_Material_Palette_Extraction_of_Materials_from_a_Single_Image_CVPR_2024_paper.html)
+[![dataset](https://img.shields.io/badge/🤗_dataset-NEW-darkred?style=flat-square)](https://huggingface.co/datasets/ilopes/texsd)
 [![star](https://img.shields.io/badge/⭐_star--darkgreen?style=flat-square)](https://github.com/astra-vision/MaterialPalette/stargazers)
 
 
@@ -27,15 +27,15 @@ https://github.com/astra-vision/MaterialPalette/assets/30524163/44e45e58-7c7d-49
 
 
 <!--ts-->
-* [Overview](#1-overview)
+* [Overview](#overview)
 * [1. Installation](#1-installation)
 * [2. Quick Start](#2-quick-start)
   * [Generation](#-generation)
   * [Complete Pipeline](#-complete-pipeline)
 * [3. Project Structure](#3-project-structure)
 * [4. (optional) Retraining](#4-optional-training)
-* [5. Acknowledgments](#5-acknowledgments)
-* [6. Licence](#6-licence)
+* [Acknowledgments](#acknowledgments)
+* [Licence](#license)
 <!--te-->
 
 ## Todo
@@ -45,11 +45,11 @@ https://github.com/astra-vision/MaterialPalette/assets/30524163/44e45e58-7c7d-49
 
 ## Overview
 
-This is the official repository of [**Material Palette**](https://astra-vision.github.io/MaterialPalette/). In a nutshell, the method works in three stages: first, concepts are extracted from an input image based on a user provided mask; then, those concepts are used to generate texture images; finally the generations are decomposed into SVBRDF maps (albedo, normals, and roughness). Visit our project page of consult our paper for more details!
+This is the official repository of [**Material Palette**](https://astra-vision.github.io/MaterialPalette/). In a nutshell, the method works in three stages: first, concepts are extracted from an input image based on a user-provided mask; then, those concepts are used to generate texture images; finally, the generations are decomposed into SVBRDF maps (albedo, normals, and roughness). Visit our project page or consult our paper for more details!
 
 ![pipeline](https://github.com/astra-vision/MaterialPalette/assets/30524163/be03b0ca-bee2-4fc7-bebd-9519c3c4947d)
 
-**Content**: This repository allows the extraction of texture concepts from image and region mask sets. It also allows generation at different resolutions. Finally it proposes a decomposition step thanks to our decomposition model, for which we share the training weights.
+**Content**: This repository allows the extraction of texture concepts from image and region mask sets. It also allows generation at different resolutions. Finally, it proposes a decomposition step thanks to our decomposition model, for which we share the training weights.
 
 > [!TIP]
 > We propose a ["Quick Start"](#2-quick-start) section: before diving straight into the full pipeline, we share four pretrained concepts ⚡ so you can go ahead and experiment with the texture generation step of the method: see ["§ Generation"](#-generation). Then you can try out the full method with your own image and masks = concept learning + generation + decomposition, see ["§ Complete Pipeline"](#-complete-pipeline).
@@ -61,7 +61,7 @@ This is the official repository of [**Material Palette**](https://astra-vision.g
     ```
     git clone https://github.com/astra-vision/MaterialPalette.git
     ```
-    The repo can also be download as a zip [here](https://github.com/astra-vision/MaterialPalette/archive/refs/heads/master.zip).
+    The repo can also be downloaded as a zip [here](https://github.com/astra-vision/MaterialPalette/archive/refs/heads/master.zip).
 
  2. Create a conda environment with the dependencies.
     ```
@@ -74,7 +74,7 @@ This is the official repository of [**Material Palette**](https://astra-vision.g
     conda activate matpal
     ```
 
- 4. If you are looking to perform decomposition, download our pretrained model and untar the archive:
+ 4. If you are looking to perform decomposition, download our pre-trained model and untar the archive:
     ```
     wget https://github.com/astra-vision/MaterialPalette/releases/download/weights/model.tar.gz
     ```
@@ -88,7 +88,7 @@ python capture/data/download.py outdir
 
 ## 2. Quick start
 
-Here are instructions to get you started using **Material Palette**. First, we provide some optimized concepts so you can experiment with the generation pipeline. We also show how to run the method on user selected images and masks (concept learning + generation + decomposition)
+Here are instructions to get you started using **Material Palette**. First, we provide some optimized concepts so you can experiment with the generation pipeline. We also show how to run the method on user-selected images and masks (concept learning + generation + decomposition)
 
 ### § Generation
 
@@ -140,7 +140,7 @@ You have control over the following parameters:
 
 We provide an example (input image with user masks used for the pipeline figure). You can download it here: [**mansion.zip**](https://github.com/astra-vision/MaterialPalette/files/14619163/mansion.zip) (credits photograph:  [Max Rahubovskiy](https://www.pexels.com/@heyho/)).
 
-To help you get started with your own images, you should follow this simple data structure: one folder per inverted image, inside should be the input image (`.jpg`, `.jpeg`, or `.png`) and a subdirectory named `masks` containing the different region masks as `.png` (these **must all have the same aspect ratio** as the rgb image). Here is an overview of our mansion example:
+To help you get started with your own images, you should follow this simple data structure: one folder per inverted image, inside should be the input image (`.jpg`, `.jpeg`, or `.png`) and a subdirectory named `masks` containing the different region masks as `.png` (these **must all have the same aspect ratio** as the RGB image). Here is an overview of our mansion example:
 ```
 ├── masks/
 │ ├── wood.png
@@ -219,14 +219,14 @@ If you have any questions, post via the [*issues tracker*](https://github.com/as
 
 ## 4. (optional) Training
 
-We provide the pretrained decomposition weights (see ["Installation"](#1-installation)). However, if you are looking to retrain the domain adaptive model for your own purposes, we provide the code to do so. Our method relies on the training of a multi-task network on labeled (real) and unlabeled (synthetic) images, *jointly*. In case you wish to retrain on the same datasets, you will have to download both the ***AmbientCG*** and ***TexSD*** datasets (⚠️ will be released soon).
+We provide the pre-trained decomposition weights (see ["Installation"](#1-installation)). However, if you are looking to retrain the domain adaptive model for your own purposes, we provide the code to do so. Our method relies on the training of a multi-task network on labeled (real) and unlabeled (synthetic) images, *jointly*. In case you wish to retrain on the same datasets, you will have to download both the ***AmbientCG*** and ***TexSD*** datasets.
 
 First download the PBR materials (source) dataset from [AmbientCG](https://ambientcg.com/):
 ```
 python capture/data/download.py path/to/target/directory
 ```
 
-In order to run the training script, use:
+To run the training script, use:
 ```
 python train.py --config=path/to/yml/config
 ```
@@ -236,14 +236,14 @@ python train.py --config=path/to/yml/config
 > [!NOTE]
 > The decomposition model allows estimating the pixel-wise BRDF maps from a single texture image input.
 
-## 5. Acknowledgments
-This research project was mainly funded by the French Agence Nationale de la Recherche (ANR) as part of project SIGHT (ANR-20-CE23-0016). Fabio Pizzati was partially funded by KAUST (Grant DFR07910). Results where obtained using HPC resources from GENCI-IDRIS (Grant 2023-AD011014389).
+## Acknowledgments
+This research project was mainly funded by the French Agence Nationale de la Recherche (ANR) as part of project SIGHT (ANR-20-CE23-0016). Fabio Pizzati was partially funded by KAUST (Grant DFR07910). Results were obtained using HPC resources from GENCI-IDRIS (Grant 2023-AD011014389).
 
-The repository contains code taken from [`PEFT`](https://github.com/huggingface/peft), [`SVBRDF-Estimation`](https://github.com/mworchel/svbrdf-estimation/tree/master), [`DenseMTL`](https://github.com/astra-vision/DenseMTL). As for visualization, we used [`DeepBump`](https://github.com/HugoTini/DeepBump) and [**Blender**](https://www.blender.org/). Credit to Runway for providing us all the [`stable-diffusion-v1-5`](https://huggingface.co/runwayml/stable-diffusion-v1-5) model weights. All images and 3D scenes used in this work have permissive licences. Special credits to [**AmbientCG**](https://ambientcg.com/list) for the huge work.
+The repository contains code taken from [`PEFT`](https://github.com/huggingface/peft), [`SVBRDF-Estimation`](https://github.com/mworchel/svbrdf-estimation/tree/master), [`DenseMTL`](https://github.com/astra-vision/DenseMTL). As for visualization, we used [`DeepBump`](https://github.com/HugoTini/DeepBump) and [**Blender**](https://www.blender.org/). Credit to Runway for providing us all the [`stable-diffusion-v1-5`](https://huggingface.co/runwayml/stable-diffusion-v1-5) model weights. All images and 3D scenes used in this work have permissive licenses. Special credits to [**AmbientCG**](https://ambientcg.com/list) for the huge work.
 
-Authors would also like to thank all members of the [Astra-Vision](https://astra-vision.github.io/) team for their valuable feedback.
+The authors would also like to thank all members of the [Astra-Vision](https://astra-vision.github.io/) team for their valuable feedback.
 
-## 6. Licence
+## License
 If you find this code useful, please cite our paper:
 ```
 @inproceedings{lopes2024material,
