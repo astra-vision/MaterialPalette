@@ -60,6 +60,11 @@
                             <span class="author-block"><sup class="is-size-7">2 </sup>University of Oxford</span>
                         </div>
 
+                        <div class="is-size-5 column has-text-centered">
+                            <h2>Accepted to CVPR 2024</h2>
+                            <b style="color:#B74D4D">Meet us Wednesday, 19 June at CVPR in Seattle during the first poster session</b>
+                        </div>
+
                         <div class="is-size-6 column has-text-centered">
                             <div class="publication-links">
                                 <span class="link-block">
@@ -68,7 +73,7 @@
                                         <span class="icon">
                                             <img src="icons/pdf.png" alt="pdf file" >
                                         </span>
-                                        <span>paper + supp</span>
+                                        <span>author</span>
                                     </a>
                                 </span>
                                 <span class="link-block">
@@ -80,6 +85,14 @@
                                     </a>
                                 </span>
                                 <span class="link-block">
+                                    <a class="external-link button is-normal is-rounded is-dark" target="_blank" href="https://openaccess.thecvf.com/content/CVPR2024/html/Lopes_Material_Palette_Extraction_of_Materials_from_a_Single_Image_CVPR_2024_paper.html">
+                                        <span class="icon">
+                                            <img src="icons/cvf.png" alt="github repo" >
+                                        </span>
+                                        <span>CVPR</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
                                     <a class="external-link button is-normal is-rounded is-dark" target="_blank" href="https://github.com/astra-vision/MaterialPalette">
                                         <span class="icon">
                                             <img src="icons/github.png" alt="github repo" >
@@ -88,9 +101,10 @@
                                     </a>
                                 </span>
                                 <span class="link-block">
-                                    <a href="#" style="cursor:not-allowed" class="external-link button is-normal is-rounded is-dark has-tooltip-bottom" data-tooltip="Coming soon!">
+                                    <a class="external-link button is-normal is-rounded is-dark" target="_blank" href="https://huggingface.co/datasets/ilopes/texsd">
+                                    <!-- <a href="#" style="cursor:not-allowed" class="external-link button is-normal is-rounded is-dark has-tooltip-bottom" data-tooltip="Coming soon!"> -->
                                         <span class="icon">
-                                            <img src="icons/tex_white.png" alt="dataset" >
+                                            <img src="icons/hf.png" alt="dataset" >
                                         </span>
                                         <span>dataset</span>
                                     </a>
@@ -818,14 +832,10 @@
 
     <section class="section" id="sec:texsd">
         <div class="container is-fullhd">
-            <h2 class="title is-3 decorated"><span><img width=30 class="mr-2" src="icons/tex.png">Our texture dataset: \(\mathsf{texSD}\)</span></h2>
-
-            <div class="subtitle has-text-centered" style="color:#B74D4D">
-                - Full dataset coming soon -
-            </div>
+            <h2 class="title is-3 decorated"><span><img width=30 class="mr-2" src="icons/hf-dark.png">Our texture dataset: \(\mathsf{TexSD}\)</span></h2>
 
             <div class="container m-5">
-                We generate a high-resolution texture dataset by prompting a pre-trained Stable Diffusion model. More details can be found in our <a href="https://arxiv.org/abs/2311.17060">preprint</a>.
+                We generate a high-resolution texture dataset by prompting a pre-trained Stable Diffusion model. You can find the 10,000 generated samples on <a href="https://huggingface.co/datasets/ilopes/TexSD">Hugging Face Datasets</a>.<br>More details can be found in our <a href="https://arxiv.org/abs/2311.17060">preprint</a>.
             </div>
 
             <div class="container">
@@ -926,9 +936,13 @@
     </section>
 
     <section class="section" id="citation">
-        <div class="container is-max-desktop content mb-6">
+        <div class="container has-text-justified is-max-desktop content mb-6">
             <h2 class="title"><img width=30 class="mr-4" src="icons/ack.png">Acknowledgements</h2>
-            <p>This research project was funded by the French Agence Nationale de la Recherche (ANR) as part of project SIGHT (ANR-20-CE23-0016). It was performed using HPC resources from GENCI-IDRIS (Grant 2023-AD011014389).</p>
+            <p>This research project was mainly funded by the French Agence Nationale de la Recherche (ANR) as part of project SIGHT (ANR-20-CE23-0016). Results were obtained using HPC resources from GENCI-IDRIS (Grant 2023-AD011014389).
+            Fabio Pizzati was partially funded by KAUST (Grant DFR07910).</p>
+            <p>The repository contains code taken from <a href="https://github.com/huggingface/peft">PEFT</a>, <a href="https://github.com/mworchel/svbrdf-estimation/tree/master">SVBRDF-Estimation</a>, <a href="https://github.com/astra-vision/DenseMTL">DenseMTL</a>. As for visualization, we used <a href="https://github.com/HugoTini/DeepBump">DeepBump</a> and <a href="https://www.blender.org/">Blender</a>. Credit to Runway for providing the <a href="https://huggingface.co/runwayml/stable-diffusion-v1-5">Stable Diffusion v1.5</a> model weights. All images and 3D scenes used in this work have permissive licenses. Special credits to <a href="https://ambientcg.com/list">AmbientCG</a> for the huge work.</p>
+            <p>We would also like to thank all members of Astra-Vision for their valuable feedback.</p>
+
         </div>
     <!-- </section> -->
 
@@ -938,8 +952,8 @@
             <pre><code>@inproceedings{lopes2023material,
     author = {<a style="color:#0F9D58" href="https://wonjunior.github.io/">Lopes, Ivan</a> and <a style="color:#0F9D58" href="https://fabvio.github.io/">Pizzati, Fabio</a> and <a style="color:#0F9D58" href="https://team.inria.fr/rits/membres/raoul-de-charette/">de Charette, Raoul</a>},
     title = {Material Palette: Extraction of Materials from a Single Image},
-    booktitle = {arXiv},
-    year = {2023},
+    booktitle = {CVPR},
+    year = {2024},
     project = {<a style="color:#0F9D58" href="https://astra-vision.github.io/MaterialPalette/">https://astra-vision.github.io/MaterialPalette/</a>}
 }</code></pre>
         </div>
@@ -957,7 +971,7 @@
                 <div class="column is-8">
                     <div class="content">
                         <p style="text-align:center">
-                            Template <a target="_blank" href="https://wonjunior.github.io/">credit</a>.
+                            Made with <a target="_blank" href="https://bulma.io/">Bulma</a>.
                         </p>
                         <!-- <p style="text-align:center">
                             Please contact <a href="">Simon Giebenhain</a> for feedback and questions.
