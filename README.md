@@ -12,11 +12,12 @@
 </div>
 <br>
 
-[![arXiv](https://img.shields.io/badge/arXiv-_-darkgreen?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2311.17060)
 [![Project page](https://img.shields.io/badge/🚀_Project_Page-_-darkgreen?style=flat-square)](https://astra-vision.github.io/MaterialPalette/)
-[![cvf](https://img.shields.io/badge/CVPR_2024-_-darkgreen?style=flat-square)](https://openaccess.thecvf.com/content/CVPR2024/html/Lopes_Material_Palette_Extraction_of_Materials_from_a_Single_Image_CVPR_2024_paper.html)
-[![dataset](https://img.shields.io/badge/🤗_dataset-NEW-darkred?style=flat-square)](https://huggingface.co/datasets/ilopes/texsd)
+[![paper](https://img.shields.io/badge/paper-_-darkgreen?style=flat-square)](https://github.com/astra-vision/MaterialPalette/releases/download/preprint/material_palette.pdf)
+[![cvf](https://img.shields.io/badge/CVF-_-darkgreen?style=flat-square)](https://openaccess.thecvf.com/content/CVPR2024/html/Lopes_Material_Palette_Extraction_of_Materials_from_a_Single_Image_CVPR_2024_paper.html)
+[![dataset](https://img.shields.io/badge/🤗_dataset--darkgreen?style=flat-square)](https://huggingface.co/datasets/ilopes/texsd)
 [![star](https://img.shields.io/badge/⭐_star--darkgreen?style=flat-square)](https://github.com/astra-vision/MaterialPalette/stargazers)
+<!--[![arXiv](https://img.shields.io/badge/arXiv-_-darkgreen?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2311.17060)-->
 
 
 <b>TL;DR,</b> Material Palette extracts a palette of PBR materials - <br>albedo, normals, and roughness - from a single real-world image.
