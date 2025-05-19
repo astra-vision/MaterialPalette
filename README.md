@@ -39,9 +39,9 @@ https://github.com/astra-vision/MaterialPalette/assets/30524163/44e45e58-7c7d-49
 * [Licence](#license)
 <!--te-->
 
-## 🚨 Todo
+<!--## 🚨 Todo
 
-- 3D rendering script.
+- 3D rendering script.-->
 
 ## Overview
 
@@ -89,6 +89,7 @@ python capture/data/download.py outdir
 ## 2. Quick start
 
 Here are instructions to get you started using **Material Palette**. First, we provide some optimized concepts so you can experiment with the generation pipeline. We also show how to run the method on user-selected images and masks (concept learning + generation + decomposition)
+
 
 ### § Generation
 
@@ -255,6 +256,13 @@ If you find this code useful, please cite our paper:
 }
 ```
 **Material Palette** is released under [MIT License](./LICENSE).
+
+
+> [!CAUTION]
+> The diffusion checkpoint that is used in the material extraction part of this project is licensed under the CreativeML Open RAIL-M license. Please note that the license includes specific obligations (such as marking modified files) that are not covered by the MIT license of this repository. Users are responsible for reviewing and complying with both licenses when using or modifying the model. See model license for details.
+
+> [!NOTE]
+> The specific checkpoint `runwayml/stable-diffusion-v1-5` is no longer available on HuggingFace models. As a user, you may wish to use a more up-to-date version or resort to using a fork of this checkpoint from a 3rd party repository.
 
 ---
 
